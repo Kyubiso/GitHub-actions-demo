@@ -1,6 +1,7 @@
 name: Main workflow
 env: # Set the secret as an input
-  github_username: ${{ github.actor }}
+  github_username: $(echo "$GITHUB_USERNAME" | tr '[:upper:]' '[:lower:]')
+
   github_password: ${{ secrets.GITHUB_TOKEN }} # Must be made available to the workflow
   GIT_COMMIT: ${{github.sha}}
 on: push
